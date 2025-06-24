@@ -1,0 +1,1491 @@
+{
+	"info": {
+		"_postman_id": "41e88c8d-acbb-455e-835d-de6929dd0ba5",
+		"name": "smart parking Management system-spms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40383150",
+		"_collection_link": "https://smart-parking-management-system.postman.co/workspace/761c94ed-622d-460a-8853-983ba7c5911e/collection/40383150-41e88c8d-acbb-455e-835d-de6929dd0ba5?action=share&source=collection_link&creator=40383150"
+	},
+	"item": [
+		{
+			"name": "user server",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"lakmal kumarasiri\",\r\n    \"email\": \"lakmal@example.com\",\r\n    \"phone\": \"+947713346663\",\r\n    \"userType\": \"PARKING_OWNER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/users/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"lakmal\",\r\n    \"email\": \"lakmal.updated@example.com\",\r\n    \"phone\": \"+94771234432\",\r\n    \"userType\": \"CUSTOMER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/users/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get UserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/users/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/users/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle Service",
+			"item": [
+				{
+					"name": "Register Vehicle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('vehicleId', jsonData.vehicleId);",
+									"    console.log('Vehicle ID saved: ' + jsonData.vehicleId);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licensePlate\": \"XXX-1234\",\n    \"vehicleType\": \"Van\",\n    \"brand\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"color\": \"Silver\",\n    \"userId\": \"{{userId}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles/{{vehicleId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles",
+								"{{vehicleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicles by User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles/user/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles",
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Simulate Vehicle Entry",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles/{{vehicleId}}/entry",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles",
+								"{{vehicleId}}",
+								"entry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Simulate Vehicle Exit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles/{{vehicleId}}/exit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles",
+								"{{vehicleId}}",
+								"exit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parking Space Service",
+			"item": [
+				{
+					"name": "Create Parking Space",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('spaceId', jsonData.spaceId);",
+									"    console.log('Space ID saved: ' + jsonData.spaceId);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spaceNumber\": \"D001\",\n    \"location\": \"Galle Face Center\",\n    \"zone\": \"Zone D\",\n    \"spaceType\": \"STANDARD\",\n    \"hourlyRate\": 120.0,\n    \"ownerId\": \"owner4\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Parking Spaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Parking Spaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/available",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reserve Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/{{spaceId}}/reserve?userId={{userId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"{{spaceId}}",
+								"reserve"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{userId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Occupy Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/{{spaceId}}/occupy?vehicleId={{vehicleId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"{{spaceId}}",
+								"occupy"
+							],
+							"query": [
+								{
+									"key": "vehicleId",
+									"value": "{{vehicleId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Release Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/{{spaceId}}/release",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"{{spaceId}}",
+								"release"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Parking Space Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Complete Flow Testing",
+			"item": [
+				{
+					"name": "1. Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('flowUserId', jsonData.userId);",
+									"    console.log('Flow User ID saved: ' + jsonData.userId);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Flow Test User\",\n    \"email\": \"flow.test@example.com\",\n    \"phone\": \"+94771234567\",\n    \"userType\": \"CUSTOMER\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Register Vehicle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('flowVehicleId', jsonData.vehicleId);",
+									"    console.log('Flow Vehicle ID saved: ' + jsonData.vehicleId);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licensePlate\": \"FLOW-123\",\n    \"vehicleType\": \"CAR\",\n    \"brand\": \"Toyota\",\n    \"model\": \"Prius\",\n    \"color\": \"White\",\n    \"userId\": \"{{flowUserId}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get Available Spaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        pm.collectionVariables.set('flowSpaceId', jsonData[0].spaceId);",
+									"        console.log('Flow Space ID saved: ' + jsonData[0].spaceId);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/available",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Reserve Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/{{flowSpaceId}}/reserve?userId={{flowUserId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"{{flowSpaceId}}",
+								"reserve"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{flowUserId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Calculate Parking Fee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/payments/calculate-fee?startTime=2025-06-22T09:00:00&endTime=2025-06-22T11:00:00&hourlyRate=100.0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments",
+								"calculate-fee"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "2025-06-22T09:00:00"
+								},
+								{
+									"key": "endTime",
+									"value": "2025-06-22T11:00:00"
+								},
+								{
+									"key": "hourlyRate",
+									"value": "100.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Process Payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('flowPaymentId', jsonData.paymentId);",
+									"    console.log('Flow Payment ID saved: ' + jsonData.paymentId);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"{{flowUserId}}\",\n    \"spaceId\": \"{{flowSpaceId}}\",\n    \"vehicleId\": \"{{flowVehicleId}}\",\n    \"amount\": 230.0,\n    \"paymentMethod\": \"CREDIT_CARD\",\n    \"cardNumber\": \"4111111111111111\",\n    \"cardHolderName\": \"Flow Test User\",\n    \"expiryDate\": \"12/26\",\n    \"cvv\": \"123\",\n    \"parkingStartTime\": \"2025-06-22T09:00:00\",\n    \"parkingEndTime\": \"2025-06-22T11:00:00\",\n    \"description\": \"Complete flow test payment\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/payments/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Occupy Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/{{flowSpaceId}}/occupy?vehicleId={{flowVehicleId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"{{flowSpaceId}}",
+								"occupy"
+							],
+							"query": [
+								{
+									"key": "vehicleId",
+									"value": "{{flowVehicleId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get Receipt",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/payments/{{flowPaymentId}}/receipt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments",
+								"{{flowPaymentId}}",
+								"receipt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. Release Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/parking-spaces/{{flowSpaceId}}/release",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"parking-spaces",
+								"{{flowSpaceId}}",
+								"release"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10. Vehicle Exit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/vehicles/{{flowVehicleId}}/exit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"vehicles",
+								"{{flowVehicleId}}",
+								"exit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Gateway Routes",
+			"item": [
+				{
+					"name": "Gateway - Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('gatewayUserId', jsonData.userId);",
+									"    console.log('Gateway User ID saved: ' + jsonData.userId);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gateway Test User\",\n    \"email\": \"gateway.test@example.com\",\n    \"phone\": \"+94771234500\",\n    \"userType\": \"CUSTOMER\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/user-service/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-service",
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user-service/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-service",
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Register Vehicle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('gatewayVehicleId', jsonData.vehicleId);",
+									"    console.log('Gateway Vehicle ID saved: ' + jsonData.vehicleId);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licensePlate\": \"GW-TEST-123\",\n    \"vehicleType\": \"CAR\",\n    \"brand\": \"Nissan\",\n    \"model\": \"Leaf\",\n    \"color\": \"Green\",\n    \"userId\": \"{{gatewayUserId}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/vehicles/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"vehicles",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Get All Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/vehicle-service/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle-service",
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Get Available Parking Spaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        pm.collectionVariables.set('gatewaySpaceId', jsonData[0].spaceId);",
+									"        console.log('Gateway Space ID saved: ' + jsonData[0].spaceId);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/parking-spaces/available",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"parking-spaces",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Reserve Parking Space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/parking-space-service/api/parking-spaces/{{gatewaySpaceId}}/reserve?userId={{gatewayUserId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"parking-space-service",
+								"api",
+								"parking-spaces",
+								"{{gatewaySpaceId}}",
+								"reserve"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{gatewayUserId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Process Payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('gatewayPaymentId', jsonData.paymentId);",
+									"    console.log('Gateway Payment ID saved: ' + jsonData.paymentId);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"{{gatewayUserId}}\",\n    \"spaceId\": \"{{gatewaySpaceId}}\",\n    \"vehicleId\": \"{{gatewayVehicleId}}\",\n    \"amount\": 345.0,\n    \"paymentMethod\": \"CREDIT_CARD\",\n    \"cardNumber\": \"4111111111111111\",\n    \"cardHolderName\": \"Gateway Test User\",\n    \"expiryDate\": \"12/26\",\n    \"cvv\": \"123\",\n    \"parkingStartTime\": \"2025-06-22T09:00:00\",\n    \"parkingEndTime\": \"2025-06-22T12:00:00\",\n    \"description\": \"Gateway test payment for 3 hours parking\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/payment-service/api/payments/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment-service",
+								"api",
+								"payments",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Get All Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/payment-service/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment-service",
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway - Get Payment Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/payment-service/api/payments/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment-service",
+								"api",
+								"payments",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health Checks",
+			"item": [
+				{
+					"name": "Eureka Server Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Config Server Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API Gateway Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Service Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vehicle Service Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parking Space Service Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Service Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Service",
+			"item": [
+				{
+					"name": "Process Credit Card Payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('paymentId', jsonData.paymentId);",
+									"    pm.collectionVariables.set('receiptNumber', jsonData.receiptNumber);",
+									"    console.log('Payment ID saved: ' + jsonData.paymentId);",
+									"    console.log('Receipt Number saved: ' + jsonData.receiptNumber);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"{{userId}}\",\n    \"spaceId\": \"{{spaceId}}\",\n    \"vehicleId\": \"{{vehicleId}}\",\n    \"amount\": 230.0,\n    \"paymentMethod\": \"CREDIT_CARD\",\n    \"cardNumber\": \"4111111111111111\",\n    \"cardHolderName\": \"John Doe\",\n    \"expiryDate\": \"12/26\",\n    \"cvv\": \"123\",\n    \"parkingStartTime\": \"2025-06-22T09:00:00\",\n    \"parkingEndTime\": \"2025-06-22T11:00:00\",\n    \"description\": \"Parking fee for 2 hours at Colombo City Center\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/payments/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calculate Parking Fee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/payments/calculate-fee?startTime=2025-06-22T09:00:00&endTime=2025-06-22T11:30:00&hourlyRate=100.0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments",
+								"calculate-fee"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "2025-06-22T09:00:00"
+								},
+								{
+									"key": "endTime",
+									"value": "2025-06-22T11:30:00"
+								},
+								{
+									"key": "hourlyRate",
+									"value": "100.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Receipt by Payment ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/payments/{{paymentId}}/receipt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments",
+								"{{paymentId}}",
+								"receipt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/payments/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"payments",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service Discovery Copy",
+			"item": [
+				{
+					"name": "Eureka Dashboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registered Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "vehicleId",
+			"value": ""
+		},
+		{
+			"key": "spaceId",
+			"value": ""
+		},
+		{
+			"key": "flowSpaceId",
+			"value": ""
+		},
+		{
+			"key": "gatewayUserId",
+			"value": ""
+		},
+		{
+			"key": "gatewaySpaceId",
+			"value": ""
+		},
+		{
+			"key": "gatewayPaymentId",
+			"value": ""
+		},
+		{
+			"key": "paymentId",
+			"value": ""
+		},
+		{
+			"key": "receiptNumber",
+			"value": ""
+		}
+	]
+}

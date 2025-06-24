@@ -1,0 +1,17 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: parking-space-service
+
+logging:
+  level:
+    lk.ijse.parkingspaceservice: DEBUG
+
+# Parking service specific configurations
+app:
+  parking:
+    max-spaces-per-owner: 50
+    default-hourly-rate: 100.00
+    booking-timeout-minutes: 15

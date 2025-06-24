@@ -1,0 +1,17 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: payment-service
+
+logging:
+  level:
+    lk.ijse.paymentservice: DEBUG
+
+# Payment service specific configurations
+app:
+  payment:
+    processing-timeout-seconds: 30
+    max-payment-amount: 10000.00
+    supported-currencies: ["LKR", "USD"]

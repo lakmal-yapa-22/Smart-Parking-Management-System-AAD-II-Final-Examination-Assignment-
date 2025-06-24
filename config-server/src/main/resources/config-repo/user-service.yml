@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+
+logging:
+  level:
+    lk.ijse.userservice: DEBUG
+
+# User service specific configurations
+app:
+  user:
+    max-registration-limit: 1000
+    default-user-type: "DRIVER"

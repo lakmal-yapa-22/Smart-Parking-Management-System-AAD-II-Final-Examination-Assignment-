@@ -41,49 +41,7 @@ Smart Parking Management System (SPMS) is a **cloud-native, microservice-based**
 
 ---
 
-## 📁 Folder Structure
 
-smart-parking-management-system/
-├── README.md
-├── LICENSE
-├── postman_collection.json
-├── docs/
-│ └── screenshots/
-│ └── eureka_dashboard.png
-├── eureka-server/
-│ ├── src/
-│ ├── pom.xml
-│ └── application.yml
-├── config-server/
-│ ├── src/
-│ ├── pom.xml
-│ └── application.yml
-├── api-gateway/
-│ ├── src/
-│ ├── pom.xml
-│ └── application.yml
-├── user-service/
-│ ├── src/
-│ ├── pom.xml
-│ └── application.yml
-├── vehicle-service/
-│ ├── src/
-│ ├── pom.xml
-│ └── application.yml
-├── parking-space-service/
-│ ├── src/
-│ ├── pom.xml
-│ └── application.yml
-├── payment-service/
-│ ├── src/
-│ ├── pom.xml
-│ └── application.yml
-
-yaml
-Copy
-Edit
-
----
 
 ## 🧪 Postman Collection
 
@@ -110,7 +68,7 @@ Edit
 ## 🖼️ Screenshots
 
 ### ✅ Eureka Dashboard
-![Eureka Dashboard](./docs/screenshots/eureka_dashboard.png)
+- ![Eureka Dashboard](./docs/screenshots/img.png)
 
 ---
 

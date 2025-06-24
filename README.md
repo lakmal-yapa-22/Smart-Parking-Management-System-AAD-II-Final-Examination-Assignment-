@@ -39,7 +39,9 @@ Smart Parking Management System (SPMS) is a cloud-native, microservice-based pla
 
 ## Resources
 
-- [Postman Collection](./jsonFile/smart parking Management system-spms.postman_collection.json)
+- 📬 **Postman Collection**: You can import the API requests into Postman using the following file:
+  [Smart Parking Management System - SPMS.postman_collection.json](./jsonFile/smart%20parking%20Management%20system-spms.postman_collection.json)
+
 - ![Eureka Dashboard](./docs/screenshots/img.png)
 
 ---
